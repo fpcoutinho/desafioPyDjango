@@ -9,8 +9,8 @@ class Calendario:
 
     def addCompromisso(self, compr):
         for c in self.lista:
-            if c.data == compr.data:
-                raise AttributeError("Um compromisso não pode invadir o tempo do outro.")
+            if (compr.ini >= c.ini and compr.ini < c.fim) or (compr.fim > c.ini and compr.fim <= c.fim):
+                raise AttributeError("Erro ao inserir '" + compr.nome +"', um compromisso não pode invadir o tempo do outro.")
         self.lista.append(compr)
 
     def deletaCompromisso(self, compr):
